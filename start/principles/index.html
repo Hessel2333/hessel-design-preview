@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light" data-palette="neutral">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta
+      name="description"
+      content="Hessel Design：设计规范、通用组件与页面参考。从 Soulmate 提炼，以中性设计方便项目间复用。"
+    />
+    <link rel="icon" type="image/svg+xml" href="/hessel-design-preview/favicon.svg" />
+    <title>Hessel Design · 设计参考</title>
+    <script>
+      try {
+        // Preserve browser data from the project's original namespace once.
+        const marker = 'hessel-design:migrated:v1';
+        if (!localStorage.getItem(marker)) {
+          const legacyPrefix = 'design-reference:';
+          const legacyKeys = Object.keys(localStorage).filter((key) =>
+            key.startsWith(legacyPrefix),
+          );
+          for (const legacyKey of legacyKeys) {
+            const key = `hessel-design:${legacyKey.slice(legacyPrefix.length)}`;
+            const value = localStorage.getItem(legacyKey);
+            if (value !== null && localStorage.getItem(key) === null) {
+              localStorage.setItem(key, value);
+            }
+          }
+          localStorage.setItem(marker, '1');
+        }
+      } catch (_) {
+        // The reference site also works when browser storage is unavailable.
+      }
+      try {
+        const preferences = JSON.parse(
+          localStorage.getItem('hessel-design:preferences:v1') || '{}',
+        );
+        document.documentElement.dataset.theme =
+          preferences.theme === 'dark' ||
+          (preferences.theme !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches)
+            ? 'dark'
+            : 'light';
+        document.documentElement.dataset.palette =
+          preferences.palette === 'soulmate' ? 'soulmate' : 'neutral';
+        document.documentElement.lang = preferences.locale === 'en' ? 'en' : 'zh-CN';
+      } catch (_) {
+        document.documentElement.dataset.theme = matchMedia('(prefers-color-scheme: dark)').matches
+          ? 'dark'
+          : 'light';
+      }
+    </script>
+    <script type="module" crossorigin src="/hessel-design-preview/assets/index-d1bf8a9x.js"></script>
+    <link rel="modulepreload" crossorigin href="/hessel-design-preview/assets/jsx-runtime-D3jfb0Ew.js">
+    <link rel="modulepreload" crossorigin href="/hessel-design-preview/assets/preferences-ZLalybtL.js">
+    <link rel="modulepreload" crossorigin href="/hessel-design-preview/assets/preload-helper-DtADVahH.js">
+    <link rel="modulepreload" crossorigin href="/hessel-design-preview/assets/createLucideIcon-BVHtiYZr.js">
+    <link rel="stylesheet" crossorigin href="/hessel-design-preview/assets/index-Bilhwrmi.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
