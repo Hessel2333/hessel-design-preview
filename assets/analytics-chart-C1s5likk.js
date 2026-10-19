@@ -24,8 +24,8 @@ export function TrendChart({ points, locale }: { points: AnalyticsPoint[]; local
           enabled: true,
           label: {
             description: locale.startsWith('zh')
-              ? \`阅读趋势，共 \${points.length} 个统计周期；详细数值见下方数据明细。\`
-              : \`Reading trend across \${points.length} periods. Detailed values are available in the data table below.\`,
+              ? \`阅读趋势，共 \${points.length} 个统计周期。\`
+              : \`Reading trend across \${points.length} periods.\`,
           },
         },
         grid: {

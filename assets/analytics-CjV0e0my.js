@@ -6,7 +6,6 @@ import {
   PageHeader,
   Select,
   Surface,
-  Table,
   getPeriodRange,
   type AnalyticsToolbarValue,
 } from '@hessel-design/ui';
@@ -138,33 +137,6 @@ export function AnalyticsExample({ standalone = false }: { standalone?: boolean 
           />
         )}
       </Surface>
-      <details className="analytics-data">
-        <summary>
-          {t('查看数据明细', 'View data table')}
-          <span>
-            {t(\`\${summary.points.length} 个统计周期\`, \`\${summary.points.length} periods\`)}
-          </span>
-        </summary>
-        <Table>
-          <caption className="sr-only">{t('阅读与收藏数据', 'Views and saves')}</caption>
-          <thead>
-            <tr>
-              <th>{t('周期开始', 'Period starts')}</th>
-              <th>{t('阅读次数', 'Views')}</th>
-              <th>{t('收藏次数', 'Saves')}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {summary.points.map((point) => (
-              <tr key={point.date}>
-                <td>{point.date}</td>
-                <td>{format.format(point.views)}</td>
-                <td>{format.format(point.saves)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      </details>
     </div>
   );
 }
